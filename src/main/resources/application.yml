@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:15432/drinker
+
+  redis:
+    port: 16379
+
+twitch:
+  streamerUsername: overridetech
+  client_id: ${TWITCH_CLIENT_ID}
+  client_secret: ${TWITCH_CLIENT_SECRET}
