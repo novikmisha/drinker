@@ -1,5 +1,8 @@
 name: Build Image
 
+env:
+  IMAGE_NAME: drinker
+
 on:
   push:
     branches: [ "master" ]
