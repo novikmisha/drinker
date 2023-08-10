@@ -1,31 +1,22 @@
 package com.noverin.drinker.adapter.`in`.scheduler
 
-import com.noverin.drinker.domain.DrinkerService
-import com.noverin.drinker.domain.drink
-import com.noverin.drinker.infrastructure.util.withMachine
-import com.noverin.drinker.service.repository.TwitchUserRepository
-import org.springframework.boot.ApplicationArguments
-import org.springframework.boot.ApplicationRunner
+import com.noverin.drinker.service.usecase.StartDrinkUseCase
+import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
+import java.util.concurrent.TimeUnit
 
-@Service
+@Component
 class DrinkScheduler(
-    val drinkerService: DrinkerService,
-    val twitchUserRepository: TwitchUserRepository
-) : ApplicationRunner {
+    val startDrinkUseCase: StartDrinkUseCase
+) {
 
-    override fun run(args: ApplicationArguments?) {
-        drink()
-    }
+    private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
 
-    @Scheduled(cron = "@hourly")
+    @Scheduled(fixedRate = 10, timeUnit = TimeUnit.MINUTES)
     fun drink() {
-        twitchUserRepository.findAll().forEach { user ->
-            drinkerService.withMachine(user.username) {
-                it.drink()
-            }
-        }
+        logger.info("starting drinking from scheduler")
+        startDrinkUseCase()
     }
 }
 

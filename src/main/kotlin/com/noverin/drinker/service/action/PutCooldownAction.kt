@@ -14,8 +14,6 @@ class PutCooldownAction(
     val drinkerCooldownService: DrinkCooldownService
 ): AbstractAction() {
 
-    override fun canExecuteOnState(drinkerState: DrinkerState) = false
-
     override fun execute(context: StateContext<DrinkerState, DrinkerEvent>) {
         val username = context.drinker().id
 
@@ -23,9 +21,8 @@ class PutCooldownAction(
         // and parsed at start of the new day
         val until = LocalDate.now(ZoneOffset.UTC)
             .plusDays(1)
-            // add this because mentoring server in not in UTC timezone monkaS
             .atStartOfDay(ZoneOffset.UTC)
-            .plusHours(1)
+            .plusMinutes(1)
             .toOffsetDateTime()
 
         drinkerCooldownService.putCooldown(username, until)
