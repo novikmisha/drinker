@@ -2,7 +2,7 @@ package com.noverin.drinker.infrastructure.config
 
 import com.noverin.drinker.domain.DrinkerEvent
 import com.noverin.drinker.domain.DrinkerState
-import com.noverin.drinker.infrastructure.statemachine.DrinkerListener
+import com.noverin.drinker.infrastructure.statemachine.StateMachineTriggerStartFixListener
 import com.noverin.drinker.infrastructure.statemachine.timer
 import com.noverin.drinker.service.action.AbstractAction
 import com.noverin.drinker.service.action.DrinkingAction
@@ -32,7 +32,7 @@ class DrinkerStateMachineConfiguration(
     val canDrunkGuard: CanDrinkGuard,
     val putCooldownAction: PutCooldownAction,
     val jpaStateMachineRepository: JpaStateMachineRepository,
-    val drinkerListener: DrinkerListener
+    val stateMachineTriggerStartFixListener: StateMachineTriggerStartFixListener
 ) : EnumStateMachineConfigurerAdapter<DrinkerState, DrinkerEvent>() {
 
     @Configuration
@@ -94,7 +94,7 @@ class DrinkerStateMachineConfiguration(
                 .runtimePersister(stateMachineRuntimePersister())
             .and()
             .withConfiguration()
-                .listener(drinkerListener)
+                .listener(stateMachineTriggerStartFixListener)
         //@formatter:on
     }
 }
