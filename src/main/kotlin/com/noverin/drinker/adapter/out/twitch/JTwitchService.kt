@@ -26,10 +26,12 @@ class JTwitchService(
     override fun messageInChat(streamerUsername: String, author: TwitchUser, message: String) {
         val credentials = OAuth2Credential("twitch", author.token)
 
-        val chat = TwitchChatBuilder.builder()
+        TwitchChatBuilder.builder()
             .withChatAccount(credentials)
-            .build();
+            .build()
+            .use {  chat ->
+                chat.sendMessage(streamerUsername, message)
+            }
 
-        chat.sendMessage(streamerUsername, message)
     }
 }
