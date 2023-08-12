@@ -15,7 +15,7 @@ class CanDrinkGuard(
     val drinkCooldownService: DrinkCooldownService,
     val twitchService: TwitchService,
     val twitchProperties: TwitchProperties
-): Guard<DrinkerState, DrinkerEvent> {
+) : Guard<DrinkerState, DrinkerEvent> {
 
     override fun evaluate(context: DrinkerContext): Boolean {
         val username = context.drinker().id

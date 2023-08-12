@@ -25,6 +25,7 @@ dependencies {
     implementation("org.springframework.statemachine:spring-statemachine-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("com.github.twitch4j:twitch4j:1.16.0")
     runtimeOnly("org.postgresql:postgresql")
 //    implementation("org.springframework.boot:spring-boot-docker-compose")

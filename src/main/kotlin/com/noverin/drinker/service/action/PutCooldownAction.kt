@@ -12,7 +12,7 @@ import java.time.ZoneOffset
 @Component
 class PutCooldownAction(
     val drinkerCooldownService: DrinkCooldownService
-): AbstractAction() {
+) : AbstractAction() {
 
     override fun execute(context: StateContext<DrinkerState, DrinkerEvent>) {
         val username = context.drinker().id

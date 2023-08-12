@@ -4,7 +4,7 @@ import com.noverin.drinker.domain.TwitchUser
 
 interface TwitchUserRepository {
 
-    fun findAll() : List<TwitchUser>
+    fun findAll(): List<TwitchUser>
 
     fun exists(username: String): Boolean
 
