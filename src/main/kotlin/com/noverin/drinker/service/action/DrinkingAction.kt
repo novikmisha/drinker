@@ -3,30 +3,27 @@ package com.noverin.drinker.service.action
 import com.noverin.drinker.domain.DrinkerContext
 import com.noverin.drinker.infrastructure.properties.TwitchProperties
 import com.noverin.drinker.infrastructure.util.drinker
-import com.noverin.drinker.service.repository.TwitchUserRepository
 import com.noverin.drinker.service.twitch.TwitchChatService
+import com.noverin.drinker.service.twitch.TwitchUserTokenService
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class DrinkingAction(
     val twitchChatService: TwitchChatService,
     val twitchProperties: TwitchProperties,
-    val twitchUserRepository: TwitchUserRepository
+    val twitchUserTokenService: TwitchUserTokenService
 ) : AbstractAction() {
 
     private val drinkingCommand = "!смузи"
-    private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
 
+    @Transactional
     override fun execute(context: DrinkerContext) {
-        runCatching {
 
-            val username = context.drinker().id
-            val user = twitchUserRepository.findByUsername(username)
-
-            twitchChatService.messageInChat(twitchProperties.streamerUsername, user, drinkingCommand)
-        }.onFailure {
-            logger.error("can't drink by ${context.drinker().id}", it)
+        val twitchUserId = context.drinker().id
+        twitchUserTokenService.withUserTokens(twitchUserId) { tokens ->
+            twitchChatService.messageInChat(twitchProperties.streamerUsername, tokens.accessToken, drinkingCommand)
         }
     }
 }

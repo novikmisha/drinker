@@ -4,6 +4,7 @@ import com.noverin.drinker.domain.DrinkerService
 import com.noverin.drinker.domain.drink
 import com.noverin.drinker.infrastructure.util.withMachine
 import com.noverin.drinker.service.repository.TwitchUserRepository
+import com.noverin.drinker.service.repository.TwitchUserTokenRepository
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
 
@@ -11,11 +12,11 @@ import org.springframework.stereotype.Component
 class StartDrinkUseCase(
     @Lazy
     val drinkerService: DrinkerService,
-    val twitchUserRepository: TwitchUserRepository
+    val twitchUserTokenRepository: TwitchUserTokenRepository
 ) {
     operator fun invoke() {
-        twitchUserRepository.findAll().forEach { user ->
-            drinkerService.withMachine(user.username) {
+        twitchUserTokenRepository.findAll().forEach { token ->
+            drinkerService.withMachine(token.twitchUserId!!) {
                 it.drink()
             }
         }

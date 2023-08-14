@@ -22,6 +22,9 @@ spring:
           twitch:
             client-id: ${TWITCH_CLIENT_ID}
             client-secret: ${TWITCH_CLIENT_SECRET}
+            scope:
+              - chat:edit
+              - chat:read
         provider:
           twitch:
             issuer-uri: https://id.twitch.tv/oauth2

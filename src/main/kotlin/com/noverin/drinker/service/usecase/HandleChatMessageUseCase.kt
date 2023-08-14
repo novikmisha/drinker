@@ -27,11 +27,13 @@ class HandleChatMessageUseCase(
         val message = chatMessage.message ?: return
 
         if (isFromMentoringBot(displayName) && isDrunkMessage(message)) {
+            // todo what if user change name?
+            // do i want to make request for username by id before drink command?
             val username = message.getUsername()
 
             logger.info("$username successfully drunk")
 
-            if (twitchUserRepository.exists(username)) {
+            twitchUserRepository.findByUsername(username)?.let { user ->
                 drinkerService.withMachine(username) {
                     it.drunk()
                 }

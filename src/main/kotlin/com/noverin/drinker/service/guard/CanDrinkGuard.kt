@@ -19,7 +19,8 @@ class CanDrinkGuard(
 
     override fun evaluate(context: DrinkerContext): Boolean {
         val username = context.drinker().id
-        return !drinkCooldownService.hasCooldown(username)
-            && twitchService.isStreamOnline(twitchProperties.streamerUsername)
+//        return !drinkCooldownService.hasCooldown(username)
+//            && twitchService.isStreamOnline(twitchProperties.streamerUsername)
+        return true
     }
 }

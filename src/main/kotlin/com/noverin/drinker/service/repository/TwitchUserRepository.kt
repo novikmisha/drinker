@@ -6,7 +6,11 @@ interface TwitchUserRepository {
 
     fun findAll(): List<TwitchUser>
 
-    fun exists(username: String): Boolean
+    fun findById(id: String): TwitchUser?
 
-    fun findByUsername(username: String): TwitchUser
+    fun findForUpdate(id: String): TwitchUser?
+
+    fun findByUsername(username: String): TwitchUser?
+
+    fun save(twitchUser: TwitchUser): TwitchUser
 }

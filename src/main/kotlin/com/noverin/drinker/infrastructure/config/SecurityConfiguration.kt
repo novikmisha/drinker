@@ -21,5 +21,7 @@ class SecurityConfiguration {
             .oauth2Login()
             .loginPage("/login")
             .and()
+            .logout()
+            .and()
             .build()
 }

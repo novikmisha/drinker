@@ -29,6 +29,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1")
     implementation("com.github.twitch4j:twitch4j:1.16.0")
     runtimeOnly("org.postgresql:postgresql")
 //    implementation("org.springframework.boot:spring-boot-docker-compose")
