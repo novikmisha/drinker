@@ -1,0 +1,14 @@
+{
+  "name": "drinker",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tailwindcss -i ./tailwind.css -o ./src/main/resources/static/css/style.css",
+    "clean": "rm ./src/main/resources/static/css/style.css",
+    "watch": "NODE_ENV=development npx tailwindcss -i ./tailwind.css -o ./src/main/resources/static/css/style.css --watch"
+  },
+  "devDependencies": {
+    "daisyui": "^3.5.1",
+    "tailwindcss": "^3.1.4"
+  },
+  "packageManager": "npm@9.8.0"
+}

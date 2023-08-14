@@ -15,7 +15,18 @@ spring:
   redis:
     port: 16379
 
+  security:
+    oauth2:
+      client:
+        registration:
+          twitch:
+            client-id: ${TWITCH_CLIENT_ID}
+            client-secret: ${TWITCH_CLIENT_SECRET}
+        provider:
+          twitch:
+            issuer-uri: https://id.twitch.tv/oauth2
+
 twitch:
-  streamerUsername: overridetech
+  streamerUsername: n0verin
   client_id: ${TWITCH_CLIENT_ID}
   client_secret: ${TWITCH_CLIENT_SECRET}

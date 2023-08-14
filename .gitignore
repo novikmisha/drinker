@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+/src/main/resources/static/css/style.css
+.frontend-gradle-plugin/
+node/
+node_modules/
