@@ -9,11 +9,11 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: ${POSTGRES_PASSWORD}
-    url: jdbc:postgresql://postgres:5432/drinker
+    password: postgres
+    url: jdbc:postgresql://localhost:15432/drinker
 
   redis:
-    host: redis
+    port: 16379
 
   security:
     oauth2:
