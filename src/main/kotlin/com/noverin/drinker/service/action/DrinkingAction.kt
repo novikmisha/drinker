@@ -5,7 +5,6 @@ import com.noverin.drinker.infrastructure.properties.TwitchProperties
 import com.noverin.drinker.infrastructure.util.drinker
 import com.noverin.drinker.service.twitch.TwitchChatService
 import com.noverin.drinker.service.twitch.TwitchUserTokenService
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
@@ -20,9 +19,8 @@ class DrinkingAction(
 
     @Transactional
     override fun execute(context: DrinkerContext) {
-
-        val twitchUserId = context.drinker().id
-        twitchUserTokenService.withUserTokens(twitchUserId) { tokens ->
+        val userId = context.drinker().id
+        twitchUserTokenService.withUserTokens(userId) { tokens ->
             twitchChatService.messageInChat(twitchProperties.streamerUsername, tokens.accessToken, drinkingCommand)
         }
     }

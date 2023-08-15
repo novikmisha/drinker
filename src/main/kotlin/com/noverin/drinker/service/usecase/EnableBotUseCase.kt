@@ -15,8 +15,8 @@ class EnableBotUseCase(
 
     @Transactional
     operator fun invoke(command: EnableBotCommand) {
-        val user = twitchUserRepository.findById(command.twitchUserId)
-            ?: error("user ${command.twitchUserId} not found")
+        val user = twitchUserRepository.findById(command.userId)
+            ?: error("user ${command.userId} not found")
 
         val tokens = TwitchUserToken(user, command.accessToken, command.ttl, command.refreshToken)
         twitchUserTokenRepository.save(tokens)

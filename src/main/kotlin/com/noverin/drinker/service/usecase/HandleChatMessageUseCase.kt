@@ -2,6 +2,7 @@ package com.noverin.drinker.service.usecase
 
 import com.noverin.drinker.domain.DrinkerService
 import com.noverin.drinker.domain.drunk
+import com.noverin.drinker.infrastructure.properties.TwitchProperties
 import com.noverin.drinker.infrastructure.util.getUsername
 import com.noverin.drinker.infrastructure.util.withMachine
 import com.noverin.drinker.service.repository.TwitchUserRepository
@@ -14,12 +15,13 @@ import org.springframework.stereotype.Service
 class HandleChatMessageUseCase(
     @Lazy
     val drinkerService: DrinkerService,
-    val twitchUserRepository: TwitchUserRepository
+    val twitchUserRepository: TwitchUserRepository,
+    twitchProperties: TwitchProperties
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
 
-    private val mentoringBotName = "MentoringBot"
+    private val mentoringNames = setOf("MentoringBot", twitchProperties.adminUsername)
     private val mentoringBotDrunkMessages = listOf("выпил смузи", "уже пил смузи сегодня")
 
     operator fun invoke(chatMessage: ChatMessage) {
@@ -34,7 +36,7 @@ class HandleChatMessageUseCase(
             logger.info("$username successfully drunk")
 
             twitchUserRepository.findByUsername(username)?.let { user ->
-                drinkerService.withMachine(username) {
+                drinkerService.withMachine(user.twitchId) {
                     it.drunk()
                 }
             }
@@ -42,7 +44,7 @@ class HandleChatMessageUseCase(
     }
 
     private fun isFromMentoringBot(displayName: String) =
-        mentoringBotName.equals(displayName, true)
+        mentoringNames.any { it.equals(displayName, true) }
 
     private fun isDrunkMessage(message: String) =
         mentoringBotDrunkMessages.any { message.endsWith(it) }

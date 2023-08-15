@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import java.security.Principal
 
 @Controller
 class MvcController(
@@ -14,7 +15,12 @@ class MvcController(
 ) {
 
     @GetMapping("/login")
-    fun login() = "login"
+    fun login(principal: Principal?): String {
+        principal?.let {
+            return "redirect:/"
+        }
+        return "login"
+    }
 
     @GetMapping("/")
     fun dashboard(principal: OAuth2AuthenticationToken, model: Model): String {

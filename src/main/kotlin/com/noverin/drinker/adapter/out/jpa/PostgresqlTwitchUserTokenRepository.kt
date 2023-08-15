@@ -9,29 +9,29 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import javax.persistence.LockModeType
 
-interface JpaTwitchTokenUserRepository: JpaRepository<TwitchUserToken, String> {
+interface JpaTwitchTokenUserRepository : JpaRepository<TwitchUserToken, String> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("select tokens from TwitchUserToken tokens where tokens.twitchUserId = ?1")
-    fun findForUpdate(twitchUserId: String): TwitchUserToken?
+    @Query("select tokens from TwitchUserToken tokens where tokens.userId = ?1")
+    fun findForUpdate(userId: String): TwitchUserToken?
 }
 
 @Repository
 class PostgresqlTwitchUserTokenRepository(
     val jpaTwitchTokenUserRepository: JpaTwitchTokenUserRepository
-): TwitchUserTokenRepository {
+) : TwitchUserTokenRepository {
 
-    override fun findByTwitchUserId(twitchUserId: String) =
-        jpaTwitchTokenUserRepository.findByIdOrNull(twitchUserId)
+    override fun findByUserId(userId: String) =
+        jpaTwitchTokenUserRepository.findByIdOrNull(userId)
 
-    override fun findForUpdate(twitchUserId: String) =
-        jpaTwitchTokenUserRepository.findForUpdate(twitchUserId)
+    override fun findForUpdate(userId: String) =
+        jpaTwitchTokenUserRepository.findForUpdate(userId)
 
     override fun save(twitchUserToken: TwitchUserToken) =
         jpaTwitchTokenUserRepository.save(twitchUserToken)
 
-    override fun deleteByTwitchUserId(twitchUserId: String) =
-        jpaTwitchTokenUserRepository.deleteById(twitchUserId)
+    override fun deleteByUserId(userId: String) =
+        jpaTwitchTokenUserRepository.deleteById(userId)
 
     override fun findAll(): List<TwitchUserToken> =
         jpaTwitchTokenUserRepository.findAll()

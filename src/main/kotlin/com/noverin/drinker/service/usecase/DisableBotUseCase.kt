@@ -18,8 +18,8 @@ class DisableBotUseCase(
 
     @Transactional
     operator fun invoke(command: DisableBotCommand) {
-        val user = twitchUserRepository.findById(command.twitchUserId)
-            ?: error("user ${command.twitchUserId} not found")
+        val user = twitchUserRepository.findById(command.userId)
+            ?: error("user ${command.userId} not found")
 
         drinkerService.releaseStateMachine(user.twitchId)
 
@@ -27,6 +27,6 @@ class DisableBotUseCase(
             drinkerRepository.deleteById(user.twitchId)
         }
 
-        twitchUserTokenRepository.deleteByTwitchUserId(user.twitchId)
+        twitchUserTokenRepository.deleteByUserId(user.twitchId)
     }
 }

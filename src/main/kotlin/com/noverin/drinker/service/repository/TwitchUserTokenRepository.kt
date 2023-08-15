@@ -4,13 +4,13 @@ import com.noverin.drinker.domain.TwitchUserToken
 
 interface TwitchUserTokenRepository {
 
-    fun findByTwitchUserId(twitchUserId: String): TwitchUserToken?
+    fun findByUserId(userId: String): TwitchUserToken?
 
     fun save(twitchUserToken: TwitchUserToken): TwitchUserToken
 
-    fun findForUpdate(twitchUserId: String): TwitchUserToken?
+    fun findForUpdate(userId: String): TwitchUserToken?
 
-    fun deleteByTwitchUserId(twitchUserId: String)
+    fun deleteByUserId(userId: String)
 
     fun findAll(): List<TwitchUserToken>
 }

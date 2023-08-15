@@ -1,7 +1,6 @@
 package com.noverin.drinker.domain
 
 import java.time.Instant
-import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -21,5 +20,5 @@ class TwitchUserToken(
 ) {
     @Id
     @Column(name = "twitch_user_id")
-    var twitchUserId: String? = null
+    var userId: String? = null
 }

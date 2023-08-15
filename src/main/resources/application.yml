@@ -30,6 +30,7 @@ spring:
             issuer-uri: https://id.twitch.tv/oauth2
 
 twitch:
-  streamerUsername: n0verin
+  streamer_username: overridetech
+  admin_username: n0verin
   client_id: ${TWITCH_CLIENT_ID}
   client_secret: ${TWITCH_CLIENT_SECRET}

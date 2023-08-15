@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="retro" class="bg-secondary" xmlns:th="http://www.thymeleaf.org">
+<html class="bg-secondary" data-theme="retro" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Drinker</title>
 
     <link href="./css/style.css" rel="stylesheet">
@@ -108,14 +108,14 @@
             </div>
             <div class="flex flex-row items-center justify-evenly px-8 py-8 border-t-2 border-t-base-content">
                 <div class="hidden lg:block w-80 h-80">
-                    <svg fill="#000000" version="1.1" id="Capa_1"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 458.649 458.649" xml:space="preserve"> <g
-                            id="XMLID_787_"> <circle id="XMLID_794_" cx="137.593" cy="40.384" r="40.384"/>
-                        <path id="XMLID_989_"
-                              d="M365.798,78.269L298.005,44.99c-4.607-2.262-9.798-3.018-14.841-2.18l-25.409,4.222l-34.216-16.796 c-8.27-4.061-18.257-0.645-22.315,7.62c-4.058,8.266-0.646,18.257,7.62,22.315l29.466,14.465l6.615-5.548 c6.866-5.759,15.579-8.93,24.533-8.931h0c11.327,0,21.996,4.975,29.271,13.649c10.448,12.456,11.862,30.197,3.52,44.147 c-1.558,2.605-3.425,4.991-5.546,7.148c40.747,20.003,38.339,19.274,41.778,19.274c9.026,0,20.675-10.125,28.137-25.327 C375.4,101.158,375.113,82.842,365.798,78.269z"/>
-                        <path id="XMLID_990_"
-                              d="M282.95,84.286c-7.06-6.782-18.346-7.288-26.003-0.866l-51.642,43.314h0l-71.09-20.933 c6.97,0.217,57.484,1.793,64.539,2.013l24.318-20.397l-15.723-7.718l-8.011,8.702l-32.092,5.063c0,0-36.59-0.611-54.19-0.603 c-15.067,0-27.281,13.063-27.281,29.177l-0.128,313.874c0,12.557,10.18,22.737,22.737,22.737s22.737-10.18,22.737-22.737V271.737 h12.942v164.175c0,12.557,10.18,22.737,22.737,22.737c12.557,0,22.737-10.18,22.737-22.737l-0.552-256.042l-63.171-35.916 l78.502,23.116c6.432,1.891,13.208,0.278,18.026-3.763l59.646-50.028C290.789,105.898,291.408,92.41,282.95,84.286z"/> </g> </svg>
+                    <svg fill="#000000" id="Capa_1" version="1.1"
+                         viewBox="0 0 458.649 458.649"
+                         xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <g
+                            id="XMLID_787_"> <circle cx="137.593" cy="40.384" id="XMLID_794_" r="40.384"/>
+                        <path d="M365.798,78.269L298.005,44.99c-4.607-2.262-9.798-3.018-14.841-2.18l-25.409,4.222l-34.216-16.796 c-8.27-4.061-18.257-0.645-22.315,7.62c-4.058,8.266-0.646,18.257,7.62,22.315l29.466,14.465l6.615-5.548 c6.866-5.759,15.579-8.93,24.533-8.931h0c11.327,0,21.996,4.975,29.271,13.649c10.448,12.456,11.862,30.197,3.52,44.147 c-1.558,2.605-3.425,4.991-5.546,7.148c40.747,20.003,38.339,19.274,41.778,19.274c9.026,0,20.675-10.125,28.137-25.327 C375.4,101.158,375.113,82.842,365.798,78.269z"
+                              id="XMLID_989_"/>
+                        <path d="M282.95,84.286c-7.06-6.782-18.346-7.288-26.003-0.866l-51.642,43.314h0l-71.09-20.933 c6.97,0.217,57.484,1.793,64.539,2.013l24.318-20.397l-15.723-7.718l-8.011,8.702l-32.092,5.063c0,0-36.59-0.611-54.19-0.603 c-15.067,0-27.281,13.063-27.281,29.177l-0.128,313.874c0,12.557,10.18,22.737,22.737,22.737s22.737-10.18,22.737-22.737V271.737 h12.942v164.175c0,12.557,10.18,22.737,22.737,22.737c12.557,0,22.737-10.18,22.737-22.737l-0.552-256.042l-63.171-35.916 l78.502,23.116c6.432,1.891,13.208,0.278,18.026-3.763l59.646-50.028C290.789,105.898,291.408,92.41,282.95,84.286z"
+                              id="XMLID_990_"/> </g> </svg>
                 </div>
                 <div class="stats stats-vertical">
                     <div class="stat">
@@ -124,19 +124,21 @@
                     </div>
                     <div class="stat">
                         <div class="stat-title">🤖 Состояние бота</div>
-                        <div id="bot-enabled-title" class="stat-value" th:classappend="${!dashboard.getBotEnabled()} ? hidden">
+                        <div class="stat-value" id="bot-enabled-title"
+                             th:classappend="${!dashboard.getBotEnabled()} ? hidden">
                             Включено
                         </div>
-                        <div id="bot-disabled-title" class="stat-value" th:classappend="${dashboard.getBotEnabled()} ? hidden">
+                        <div class="stat-value" id="bot-disabled-title"
+                             th:classappend="${dashboard.getBotEnabled()} ? hidden">
                             Выключено
                         </div>
                         <div class="stat-actions">
                             <button class="btn btn-sm btn-warning" id="bot-button-disable"
-                                    th:classappend="${!dashboard.getBotEnabled()} ? hidden" onclick="disableBot()">
+                                    onclick="disableBot()" th:classappend="${!dashboard.getBotEnabled()} ? hidden">
                                 Выключить
                             </button>
                             <button class="btn btn-sm btn-success" id="bot-button-enable"
-                                    th:classappend="${dashboard.getBotEnabled()} ? hidden" onclick="enableBot()">
+                                    onclick="enableBot()" th:classappend="${dashboard.getBotEnabled()} ? hidden">
                                 Включить
                             </button>
                         </div>
@@ -147,13 +149,13 @@
                     </div>
                     <div class="stat">
                         <div class="stat-title">📅 Последний раз выпито ботом</div>
-                        <!--                        <div class="stat-value">13 декабря 2024</div>-->
-                        <div class="stat-value">-</div>
+                        <div class="stat-value"
+                             th:text="${dashboard.getLastBotDrinkDate() != null} ? ${#temporals.format(dashboard.lastBotDrinkDate, 'dd MMMM yyyy', new java.util.Locale('ru', 'RU'))} : '-' "></div>
                     </div>
                     <div class="stat">
                         <div class="stat-actions">
                             <a href="/login">
-                                <button id="logout" class="btn btn-sm btn-warning" onclick="logout()">Выйти</button>
+                                <button class="btn btn-sm btn-warning" id="logout" onclick="logout()">Выйти</button>
                             </a>
                         </div>
                     </div>

@@ -26,10 +26,10 @@ class SpringTwitchUserTokenService(
                 .build())
         }
 
-    override fun withUserTokens(twitchUserId: String, apply: (tokens: TwitchUserToken) -> Unit) {
+    override fun withUserTokens(userId: String, apply: (tokens: TwitchUserToken) -> Unit) {
         transactionTemplate.execute {
-            val twitchUserToken = twitchUserTokenRepository.findForUpdate(twitchUserId)
-                ?: error("tokens not found for user $twitchUserId")
+            val twitchUserToken = twitchUserTokenRepository.findForUpdate(userId)
+                ?: error("tokens not found for user $userId")
 
             val clientRegistration = clientRegistrationRepository.findByRegistrationId("twitch")
             val authorizedClient = getAuthorizedClient(clientRegistration, twitchUserToken)

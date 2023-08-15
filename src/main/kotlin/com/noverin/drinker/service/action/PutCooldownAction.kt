@@ -15,7 +15,7 @@ class PutCooldownAction(
 ) : AbstractAction() {
 
     override fun execute(context: StateContext<DrinkerState, DrinkerEvent>) {
-        val username = context.drinker().id
+        val userId = context.drinker().id
 
         // there can be bug if message was send at the end of the day
         // and parsed at start of the new day
@@ -25,6 +25,6 @@ class PutCooldownAction(
             .plusMinutes(1)
             .toOffsetDateTime()
 
-        drinkerCooldownService.putCooldown(username, until)
+        drinkerCooldownService.putCooldown(userId, until)
     }
 }

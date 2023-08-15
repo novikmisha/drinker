@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 class TwitchProperties(
     val streamerUsername: String,
-
+    val adminUsername: String,
     val clientId: String,
     val clientSecret: String
 )

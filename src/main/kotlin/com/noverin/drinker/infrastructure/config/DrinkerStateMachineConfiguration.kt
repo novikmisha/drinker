@@ -7,6 +7,7 @@ import com.noverin.drinker.infrastructure.statemachine.timer
 import com.noverin.drinker.service.action.AbstractAction
 import com.noverin.drinker.service.action.DrinkingAction
 import com.noverin.drinker.service.action.PutCooldownAction
+import com.noverin.drinker.service.action.SaveTwitchUserDrinkAction
 import com.noverin.drinker.service.guard.CanDrinkGuard
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -31,6 +32,7 @@ class DrinkerStateMachineConfiguration(
     val drinkingAction: DrinkingAction,
     val canDrunkGuard: CanDrinkGuard,
     val putCooldownAction: PutCooldownAction,
+    val saveTwitchUserDrinkAction: SaveTwitchUserDrinkAction,
     val jpaStateMachineRepository: JpaStateMachineRepository,
     val stateMachineTriggerStartFixListener: StateMachineTriggerStartFixListener
 ) : EnumStateMachineConfigurerAdapter<DrinkerState, DrinkerEvent>() {
@@ -79,6 +81,7 @@ class DrinkerStateMachineConfiguration(
                 .target(DrinkerState.WAITING)
                 .event(DrinkerEvent.DRUNK)
                 .action(putCooldownAction)
+                .action(saveTwitchUserDrinkAction)
             .and()
             .withInternal()
                 .source(DrinkerState.DRINKING)

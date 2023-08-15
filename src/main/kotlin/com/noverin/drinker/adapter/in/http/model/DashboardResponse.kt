@@ -5,6 +5,6 @@ import java.time.LocalDate
 class DashboardResponse(
     val username: String,
     val botEnabled: Boolean,
-    val totalBotDrink: Int,
+    val totalBotDrink: Long,
     val lastBotDrinkDate: LocalDate?
 )

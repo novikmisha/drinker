@@ -1,7 +1,6 @@
 package com.noverin.drinker.adapter.out.jpa
 
 import com.noverin.drinker.domain.TwitchUser
-import com.noverin.drinker.infrastructure.util.unwrap
 import com.noverin.drinker.service.repository.TwitchUserRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Lock
