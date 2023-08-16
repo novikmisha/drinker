@@ -14,7 +14,7 @@ interface JpaTwitchUserRepository : JpaRepository<TwitchUser, String> {
     fun findByUsername(username: String): TwitchUser?
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("select user from TwitchUser user where user.twitchId = ?1")
+    @Query("select user from TwitchUser user where lower(user.twitchId) = ?1")
     fun findForUpdate(id: String): TwitchUser?
 }
 
@@ -32,8 +32,8 @@ class PosgresqlTwitchUserRepository(
     override fun findForUpdate(id: String) =
         jpaTwitchUserRepository.findForUpdate(id)
 
-    override fun findByUsername(username: String): TwitchUser? =
-        jpaTwitchUserRepository.findByUsername(username)
+    override fun findByUsernameIgnoreCase(username: String): TwitchUser? =
+        jpaTwitchUserRepository.findByUsername(username.lowercase())
 
     override fun save(twitchUser: TwitchUser) =
         jpaTwitchUserRepository.save(twitchUser)

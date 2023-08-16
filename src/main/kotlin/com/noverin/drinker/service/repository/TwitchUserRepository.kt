@@ -10,7 +10,7 @@ interface TwitchUserRepository {
 
     fun findForUpdate(id: String): TwitchUser?
 
-    fun findByUsername(username: String): TwitchUser?
+    fun findByUsernameIgnoreCase(username: String): TwitchUser?
 
     fun save(twitchUser: TwitchUser): TwitchUser
 }

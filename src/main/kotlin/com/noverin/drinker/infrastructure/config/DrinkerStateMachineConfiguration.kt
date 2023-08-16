@@ -86,7 +86,7 @@ class DrinkerStateMachineConfiguration(
             .withInternal()
                 .source(DrinkerState.DRINKING)
                 .action(drinkingAction)
-                .timer(10_000, Int.MAX_VALUE)
+                .timer(15_000, 3)
         //@formatter:on
     }
 

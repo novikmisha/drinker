@@ -37,7 +37,7 @@ class HandleChatMessageUseCase(
 
             logger.info("$username successfully drunk")
 
-            twitchUserRepository.findByUsername(username)?.let { user ->
+            twitchUserRepository.findByUsernameIgnoreCase(username)?.let { user ->
                 drinkerService.withMachine(user.twitchId) {
                     it.drunk()
                 }
