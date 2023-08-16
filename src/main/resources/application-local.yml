@@ -13,6 +13,7 @@ spring:
     url: jdbc:postgresql://localhost:15432/drinker
 
   redis:
+    host: localhost
     port: 16379
 
   security:
@@ -30,7 +31,8 @@ spring:
             issuer-uri: https://id.twitch.tv/oauth2
 
 twitch:
-  streamer_username: overridetech
+  streamer_username: n0verin
   admin_username: n0verin
   client_id: ${TWITCH_CLIENT_ID}
   client_secret: ${TWITCH_CLIENT_SECRET}
+  marketing_bot_key: ${TWITCH_MARKETING_BOT_KEY}

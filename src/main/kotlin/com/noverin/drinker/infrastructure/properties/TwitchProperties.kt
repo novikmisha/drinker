@@ -9,5 +9,6 @@ class TwitchProperties(
     val streamerUsername: String,
     val adminUsername: String,
     val clientId: String,
-    val clientSecret: String
+    val clientSecret: String,
+    val marketingBotKey: String
 )

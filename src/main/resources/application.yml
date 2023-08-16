@@ -37,3 +37,4 @@ twitch:
   admin_username: n0verin
   client_id: ${TWITCH_CLIENT_ID}
   client_secret: ${TWITCH_CLIENT_SECRET}
+  marketing_bot_key: ${TWITCH_MARKETING_BOT_KEY}

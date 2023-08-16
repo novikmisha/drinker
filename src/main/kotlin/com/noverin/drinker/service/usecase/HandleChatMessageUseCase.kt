@@ -6,6 +6,7 @@ import com.noverin.drinker.infrastructure.properties.TwitchProperties
 import com.noverin.drinker.infrastructure.util.getUsername
 import com.noverin.drinker.infrastructure.util.withMachine
 import com.noverin.drinker.service.repository.TwitchUserRepository
+import com.noverin.drinker.service.twitch.TwitchMarketingService
 import com.noverin.drinker.service.usecase.model.ChatMessage
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Lazy
@@ -16,6 +17,7 @@ class HandleChatMessageUseCase(
     @Lazy
     val drinkerService: DrinkerService,
     val twitchUserRepository: TwitchUserRepository,
+    val twitchMarketingService: TwitchMarketingService,
     twitchProperties: TwitchProperties
 ) {
 
@@ -39,7 +41,7 @@ class HandleChatMessageUseCase(
                 drinkerService.withMachine(user.twitchId) {
                     it.drunk()
                 }
-            }
+            } ?: twitchMarketingService.promoteBotToUser(username)
         }
     }
 
