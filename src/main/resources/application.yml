@@ -29,6 +29,9 @@ spring:
           twitch:
             issuer-uri: https://id.twitch.tv/oauth2
 
+server:
+  forward-headers-strategy: native
+
 twitch:
   streamer_username: overridetech
   admin_username: n0verin
