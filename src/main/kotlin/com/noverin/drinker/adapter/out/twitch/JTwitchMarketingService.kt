@@ -14,9 +14,14 @@ class JTwitchMarketingService(
 ) : TwitchMarketingService {
 
     override fun promoteBotToUser(username: String)  {
-        twitchChat.sendMessage(
-            twitchProperties.streamerUsername,
-            "@$username посмотри на https://drinker.bar и не пей смузи сам!"
-        )
+        if (userIsLuckyOne(username)) {
+            twitchChat.sendMessage(
+                twitchProperties.streamerUsername,
+                "@$username посмотри на https://drinker.bar и не пей смузи сам!"
+            )
+        }
     }
+
+    private fun userIsLuckyOne(username: String) =
+        0 == (0..9).random()
 }
